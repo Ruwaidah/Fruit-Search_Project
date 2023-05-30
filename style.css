@@ -1,46 +1,69 @@
 * {
   /* box-sizing: border-box; */
+  box-sizing: border-box;
 }
 
-:focus {
- /* TODO */
+.search-container input:focus {
+  /* TODO */
+  border: rgb(216, 215, 215) solid 1px;
 }
 
 body {
   /* TODO */
-}
-
-input {
- /* TODO */
+  height: 100vh;
+  width: 100%;
+  background-image: linear-gradient(to right, rgb(245 202 30), rgb(224 80 0));
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .search-container {
- /* TODO */
+  /* TODO */
+  position: relative;
 }
-.search-container input,
+
+.search-container input {
+  /* TODO */
+  background-color: rgb(238 165 63);
+  border: rgb(90, 90, 90) solid 1px;
+  border-radius: 4px;
+  height: 36px;
+  width: 260px;
+  padding-left: 10px;
+  color: black;
+  outline: none;
+}
 .search-container .suggestions {
   /* TODO */
-}
-.search-container input {
- /* TODO */
-}
-.search-container .suggestions {
-   /* TODO */
+  position: absolute;
+  top: 36px;
+  display: flex;
 }
 
 ul {
   /* TODO */
-}
-ul.has-suggestions {
-  /* TODO */
-}
-ul li {
-  /* TODO */
-}
-ul li:hover {
-  /* TODO */
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  width: 260px;
+  background-color: rgb(238 165 63);
+  justify-content: space-around;
+  margin: 0;
+  border-radius: 0 0 4px 4px;
 }
 
-input {
-   /* TODO */
+ul li {
+  /* TODO */
+  /* margin: 4px 0; */
+  list-style-type: none;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding-left: 6px;
+  cursor: pointer;
+}
+
+.hover-li {
+  background-color: rgb(184, 126, 46);
 }
