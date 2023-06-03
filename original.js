@@ -1,6 +1,6 @@
 const input = document.querySelector("#fruit");
 const suggestions = document.querySelector(".suggestions ul");
-// const ul = document.querySelector("ul");
+const ul = document.querySelector("ul");
 
 const fruit = [
   "Apple",
@@ -86,43 +86,43 @@ const fruit = [
 
 // START THE SEARCH FROM THE FRUIT ARRAY ========================== STEP TWO
 const search = (str) =>
-  // Filter The List Based On User Input
+// Filter The List Based On User Input
   fruit.filter(
     (fru) => fru.toLowerCase().includes(str.toLowerCase()) && str !== ""
   );
 
 // WHEN USER PRESS ON KEYBOARD =================================== STEP ONE
 function searchHandler(e) {
-  suggestions.innerHTML = "";
-  showSuggestions(search(e.target.value));
+  const results = search(input.value);
+
+  //  DELETE ALL LI TAGS EVERYTIME USER CLICK NEW KEY
+  while (ul.firstChild) ul.removeChild(ul.firstChild);
+
+  showSuggestions(results);
 }
 
-/**
- * Display The Results List As A Drop Down =========================== STEP THREE
- * */
-function showSuggestions(results) {
-  for (let item of results) {
+// Display The Results List As A Drop Down =========================== STEP THREE
+function showSuggestions(results, inputVal) {
+  // TODO
+
+  // LOOP THROUGH THE FILTER FRUIT AND CREATE LI TAG
+  for (let fru of results) {
     const li = document.createElement("li");
-    li.innerText = item;
-    suggestions.append(li);
+    li.innerText = fru;
+    ul.append(li);
   }
 }
 
-/**
- * USER CLICK ON SUGGESTION FROM THE DROP-DOWN MENU  ========================== STEP FOUR
- */
+// USER CLICK ON SUGGESTION FROM THE DROP-DOWN MENU  ========================== STEP FOUR
 function useSuggestion(e) {
+  // TODO
   input.value = e.target.innerText;
-  suggestions.innerHTML = "";
+  while (ul.firstChild) ul.removeChild(ul.firstChild);
 }
 
-/**
- * Highlight the suggestion below a user’s cursor
- *  Add an event listener to trigger whenever a user hovers over one of the suggestions in the drop down list.
- *  Write a function which highlights the suggestion. Attach this function to the event listener.
- *  Highlight the suggestion below a user’s cursor
- * @param {*} e
- */
+// **Highlight the suggestion below a user’s cursor**
+// Add an event listener to trigger whenever a user hovers over one of the suggestions in the drop down list. Write a function which highlights the suggestion. Attach this function to the event listener.
+// Highlight the suggestion below a user’s cursor
 const highlightsTheSuggestion = (e) => {
   if (e.target.tagName === "LI") e.target.classList.add("hover-li");
 };
@@ -130,5 +130,5 @@ const unHighlightsTheSuggestion = (e) => e.target.classList.remove("hover-li");
 
 input.addEventListener("keyup", searchHandler);
 suggestions.addEventListener("click", useSuggestion);
-suggestions.addEventListener("mouseover", highlightsTheSuggestion);
-suggestions.addEventListener("mouseout", unHighlightsTheSuggestion);
+ul.addEventListener("mouseover", highlightsTheSuggestion);
+ul.addEventListener("mouseout", unHighlightsTheSuggestion);
